@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 
-gem 'minitest'
-gem 'minitest-spec'
-gem 'rack-test'
-gem 'nokogiri'
+group :test do
+  gem 'minitest',      require: 'minitest/autorun'
+  gem 'minitest-spec', require: 'minitest/spec'
+  gem 'rack-test',     require: 'rack/test'
+  gem 'nokogiri'
+end
