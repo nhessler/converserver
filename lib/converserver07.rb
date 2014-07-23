@@ -71,7 +71,6 @@ describe Converserver do
     html = Nokogiri::HTML(last_response.body)
     phrase =  "I'll say whatever you Want, just dont give up on me!"
 
-
     assert last_response.ok?
     assert_equal 'Say Something', html.css('title').text
     assert_equal phrase, html.css('h1').text
