@@ -13,7 +13,7 @@ class Converserver < Sinatra::Base
     when /^Say Something$/i
       erb :say, locals: {
         title: "Say Something",
-        video: 'http://youtu.be/VVgixOjGhVU',
+        video: '<iframe width="560" height="315" src="//www.youtube.com/embed/-2U0Ivkn2Ds" frameborder="0" allowfullscreen></iframe>',
         artists: ["Ian Axel", "Chad Vaccarino", "Christina Aguilera"],
         phrase: "I'll say whatever you Want, just dont give up on me!",
         name: params[:name],
@@ -22,9 +22,9 @@ class Converserver < Sinatra::Base
     when /^Im So Fancy$/i
       erb :say, locals: {
         title: "I'm So Fancy",
-        video: 'http://youtu.be/O-zpOMYRi0w',
+        video: '<iframe width="560" height="315" src="//www.youtube.com/embed/O-zpOMYRi0w" frameborder="0" allowfullscreen></iframe>',
         artists: ["Iggy Azalea", "Charli XCX"],
-        phrase: "Iggy is fancy!, You need to work a bit harder",
+        phrase: "Iggy is fancy! You need to work a bit harder",
         name: params[:name],
         list: [1, 2, 3, 4, 5, 6]
       }
@@ -74,14 +74,14 @@ describe Converserver do
 
     assert last_response.ok?
     assert_equal 'Say Something', html.css('title').text
-    assert_equal phrase, html.css('h1 a').text
+    assert_equal phrase, html.css('h1').text
   end
 
   it "links to a video for \"Say Something\"" do
     get '/say/Say_Something'
     html = Nokogiri::HTML(last_response.body)
-
-    assert_equal "http://youtu.be/VVgixOjGhVU", html.at_css("h1 a")['href']
+    source = "//www.youtube.com/embed/-2U0Ivkn2Ds"
+    assert_equal source, html.at_css("iframe")['src']
   end
 
   it 'has an artists section for \"Say Something\"' do
@@ -99,7 +99,7 @@ describe Converserver do
     skip
     get '/say/Im_so_Fancy'
     html = Nokogiri::HTML(last_response.body)
-    phrase =  "Iggy is fancy!, You need to work a bit harder"
+    phrase =  "Iggy is fancy! You need to work a bit harder"
 
     #lets write some assertions
   end

@@ -5,12 +5,10 @@
     <title><%= title %></title>
   </head>
   <body>
-    <% if artists.empty?  %>
-      <% %>
-      <h1><%= title %><%= ", #{name}" if name %></h1>
-    <% else %>
-      <h1><a href="<%= video %>"><%= phrase %></a></h1>
+    <h1><%= phrase %><%= ", #{name}" if name %></h1>
+    <% unless artists.empty? %>
       <section>
+        <%= video %>
         <h3>Artists:</h3>
         <ul>
           <% artists.each do |artist| %>
@@ -22,7 +20,7 @@
     <h3>Stuff:</h3>
     <ul id='stuff'>
       <% list.each do |item| %>
-        <li><% item %></li>
+        <li><%= item %></li>
       <% end %>
     </ul>
   </body>
