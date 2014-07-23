@@ -1,8 +1,10 @@
 TATFT, Even Sinatra
 ===========================
-master - has tests stubbed out to be completed
-solutions - has all tests filled out and passing
+####branches
+* master - has tests stubbed out to be completed
+* solutions - has all tests filled out and passing
 
+####How to run things
 in /conversever.rb you can comment and uncomment the appopriate test file as needed.
 Each section below  has it's related converserver test file for easy lookup.
 
