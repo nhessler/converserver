@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <% if artists.empty?  %>
+      <% %>
+      <h1><%= title %><%= ", #{name}" if name %></h1>
+    <% else %>
+      <h1><a href="<%= video %>"><%= phrase %></a></h1>
+      <section>
+        <h3>Artists:</h3>
+        <ul>
+          <% artists.each do |artist| %>
+            <li><%= artist  %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+    <h3>Stuff:</h3>
+    <ul id='stuff'>
+      <% list.each do |item| %>
+        <li><% item %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
