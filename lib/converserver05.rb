@@ -42,6 +42,7 @@ describe Converserver do
 
   it "says hello to me" do
     get '/hello?name=Nathan'
+    # get '/hello', name: "Nathan"
     assert last_response.ok?
     assert_equal "Hello, Nathan", last_response.body
   end
@@ -58,14 +59,12 @@ describe Converserver do
   end
 
   it "says what I want" do
-    get '/say/Cheese'
-    assert last_response.ok?
-    assert_equal "Cheese", last_response.body
+    skip
+    #implement me
   end
 
   it "says what I want to me" do
-    get '/say/Superaoseunthaoesunth?name=Mary+Poppins'
-    assert last_response.ok?
-    assert_equal 'Superaoseunthaoesunth, Mary Poppins', last_response.body
+    skip
+    #implement me
   end
 end

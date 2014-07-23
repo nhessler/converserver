@@ -19,7 +19,7 @@ class Converserver < Sinatra::Base
         name: params[:name],
         list: ['North Carolina', 'Georgia', 'Ohio', 'Virginia', 'District of Columbia', 'Colorado?']
       }
-    when /^Im So Fancy/i
+    when /^Im So Fancy$/i
       erb :say, locals: {
         title: "I'm So Fancy",
         video: '<iframe width="560" height="315" src="//www.youtube.com/embed/O-zpOMYRi0w" frameborder="0" allowfullscreen></iframe>',
@@ -52,7 +52,7 @@ describe Converserver do
     html = Nokogiri::HTML(last_response.body)
 
     assert last_response.ok?
-    assert_equal "I Like Testing Sinatra", html.css('h1').text
+    assert_equal "I Like Testing Sinatra", html.css('title').text
     assert_equal 4, html.css('li').size
     assert_empty html.css('section')
   end
@@ -62,6 +62,7 @@ describe Converserver do
     html = Nokogiri::HTML(last_response.body)
 
     assert last_response.ok?
+    assert_equal "Nice Beard", html.css('title').text
     assert_equal "Nice Beard, Nathan", html.css('h1').text
   end
 
@@ -88,16 +89,17 @@ describe Converserver do
     section = html.css('section')
     artists = section.css('li').map{ |li| li.text }
 
+    assert_equal "Artists:", section.css('h3').text
     assert_equal 3, artists.size
     assert_includes artists, "Christina Aguilera"
   end
 
   it "has a special phrase for \"Im So Fancy\"" do
+    skip
     get '/say/Im_so_Fancy'
     html = Nokogiri::HTML(last_response.body)
     phrase =  "Iggy is fancy! You need to work a bit harder"
 
-    assert last_response.ok?
-    assert_equal phrase, html.css('h1').text
+    #lets write some assertions
   end
 end

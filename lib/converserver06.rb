@@ -20,10 +20,6 @@ class Converserver < Sinatra::Base
 
     say
   end
-
-  get '/google' do
-    redirect "http://google.com"
-  end
 end
 
 
@@ -55,17 +51,7 @@ describe Converserver do
   end
 
   it 'says goodbye to me' do
-    get '/goodbye/Watts'
-    assert last_response.redirect?
-    follow_redirect!
-    assert last_response.ok?
-    assert_equal "Goodbye, Watts", last_response.body
+    skip
     #implement me
-  end
-
-  it 'redirects to google' do
-    get '/google'
-    assert_equal 302, last_response.status #redirect
-    assert_equal "http://google.com", last_response.location
   end
 end

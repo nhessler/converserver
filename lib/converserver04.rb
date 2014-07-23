@@ -42,7 +42,7 @@ describe Converserver do
   end
 
   it "only says goodbye to get requests" do
-    post '/goodbye'
-    assert last_response.not_found?
+    skip
+    #implement me
   end
 end
