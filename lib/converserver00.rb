@@ -11,17 +11,17 @@ class Converserver < Sinatra::Base
 
 end
 
-class ConverserverTest < Minitest::Test
+# class ConverserverTest < Minitest::Test
 
-  def test_it_says_hello
-    skip
-    #talk about how to implement me
-  end
-end
-
-# describe Converserver do
-#   it "says hello" do
+#   def test_it_says_hello
 #     skip
 #     #talk about how to implement me
 #   end
 # end
+
+describe Converserver do
+  it "says hello" do
+    skip
+    #talk about how to implement me
+  end
+end

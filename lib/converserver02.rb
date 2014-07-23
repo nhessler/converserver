@@ -25,13 +25,13 @@ describe Converserver do
 
   it "says hello" do
     get '/hello'
-    assert_equal 200, last_response.status
     assert last_response.ok?
     assert_equal "Hello, World", last_response.body
   end
 
   it "says goodbye" do
-    skip
-    #implement me
+    get '/goodbye'
+    assert last_response.ok?
+    assert_equal "Goodbye, World", last_response.body
   end
 end

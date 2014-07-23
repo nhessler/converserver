@@ -30,7 +30,9 @@ describe Converserver do
   end
 
   it "says goodbye" do
-    skip
+    post '/goodbye'
+    assert last_response.ok?
+    assert_equal "Goodbye, World", last_response.body
     #implement me
   end
 end
